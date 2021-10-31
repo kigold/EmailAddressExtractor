@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Code7248.word_reader;
 
 namespace EmailAddressExtractorSln
 {
@@ -23,7 +24,16 @@ namespace EmailAddressExtractorSln
 
         public static string ReadWordFile(string filePath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TextExtractor extractor = new TextExtractor(filePath);
+                string text = extractor.ExtractText();
+                return text;
+            }
+            catch
+            {
+                return "";
+            }
         }
     }
 }
