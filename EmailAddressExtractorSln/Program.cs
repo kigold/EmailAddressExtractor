@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EmailAddressExtractorSln.Utils;
 
 namespace EmailAddressExtractorSln
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(string.Join("; ", EmailHelperExtension.GetEmailFromDoc("randam text kingsley@yahoo.com more random text kingsley@gmail.com")));
+            Console.Read();
         }
     }
 }
