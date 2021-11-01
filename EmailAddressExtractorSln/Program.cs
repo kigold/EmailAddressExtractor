@@ -5,7 +5,7 @@ using EmailAddressExtractorSln.Utils;
 
 namespace EmailAddressExtractorSln
 {
-    public class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
@@ -32,7 +32,16 @@ namespace EmailAddressExtractorSln
                     emailsResult.UnionWith(emails);
                 }
             }
-            Console.WriteLine(string.Join("; ", emailsResult));
+
+            var outputFile = Path.Combine(folderPath, "output.txt");
+            using (StreamWriter file = new StreamWriter(outputFile))
+            {
+                foreach (string email in emailsResult)
+                {
+                    file.WriteLine($"{email};");
+                }
+                file.WriteLine($"There were a total of {emailsResult.Count} email addresses found;");
+            }
             Console.Read();
         }
     }
